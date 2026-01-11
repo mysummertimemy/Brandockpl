@@ -1,0 +1,9 @@
+IF %BGT_VAR%
+      Global("C#Brandock_Shoequest","GLOBAL",0)	
+THEN
+	RESPONSE #100
+            SetGlobal("C#Brandock_Shoequest","GLOBAL",1)
+	    CreateCreature("c#brserv",[4250.715],0)
+END
+
+

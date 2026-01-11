@@ -1,0 +1,75 @@
+/* Brandock spawn - if he wasn't in the group upon the transition
+
+
+-he was part of the group in BG1
+-he retrieved his possessions ["quest possession"] (so he knew they were lost and joined PC) (Global("C#BrandockSpawn","GLOBAL",5))
+-He did not leave unhappy in BG1
+
+*/
+
+/* Global("C#BrandockSpawn","GLOBAL",5) for BGT
+GlobalGT("C#BrandockSpawn","GLOBAL",5) for EET */
+
+
+IF 
+	!InMyArea("C#Brandock")
+	!Dead("C#Brandock")
+	Global("C#Brandock_Gone","GLOBAL",0)
+	GlobalGT("C#BrandockSpawn","GLOBAL",4)
+	GlobalLT("C#BrandockSpawn","GLOBAL",10)
+THEN
+	RESPONSE #100
+		SetGlobal("C#BrandockSpawn","GLOBAL",10)
+		MoveGlobal("c#br03","C#Brandock",[365.326])
+	   	ActionOverride("C#Brandock",Face(6))
+		ReallyForceSpellRES("SPPR607","C#Brandock") //Heal 
+	   	ActionOverride("C#Brandock",SetDialog("c#brand2")
+		ActionOverride("C#Brandock",ChangeAIScript("",DEFAULT))
+	    	ActionOverride("C#Brandock",ChangeAIScript("c#brand2",OVERRIDE))
+		ActionOverride("C#Brandock",SetGlobal("bd_joined","locals",0))
+		ActionOverride("C#Brandock",SetGlobal("C#LevelUp","LOCALS",0))
+		SetGlobal("C#BrandockJoined","GLOBAL",0)
+/* shape shifter quest: reset variable so it can be 'updated' via PID if necessary */
+		SetGlobal("C#Brandock_UpdateShapeshift","LOCALS",0)
+END
+
+
+/* new game: Global("C#BrandockSpawn","GLOBAL",0) */
+
+
+IF 
+      Global("C#BrandockSpawn","GLOBAL",0)	
+THEN
+	RESPONSE #100
+            	SetGlobal("C#BrandockSpawn","GLOBAL",10)
+	    	CreateCreature("c#bran03",[365.326],6)
+		%Brandock_MakeGlobalOverride%
+	   	ActionOverride("C#Brandock",SetDialog("c#brand2")
+	    	ActionOverride("C#Brandock",ChangeAIScript("c#brand2",OVERRIDE))
+		SetGlobal("C#BrandockJoined","GLOBAL",0)
+
+/* shape shifter quest: reset variable so it can be 'updated' via PID (not really needed for newly spawned cre) */
+		SetGlobal("C#Brandock_UpdateShapeshift","LOCALS",0)
+
+/* possessions quest - done */
+		SetGlobal("C#Brandock_Possessions","GLOBAL",21) 
+
+/* book restore quest */
+		SetGlobal("C#Br_BookRestore","GLOBAL",12)
+
+/* scroll scribing */
+		SetGlobal("C#Br_ScribeScrollQuest","GLOBAL",8)
+		EraseJournalEntry(@10050)
+		EraseJournalEntry(@10054)
+		AddJournalEntry(@10012,QUEST_DONE)
+
+/* ## find Brandock's first tutor quest 
+		ActionOverride("C#Brandock",SetGlobal("##","GLOBAL",##)) 
+*/
+
+/* items */
+		GiveItemCreate("POTN52","C#Brandock",5,0,0)
+		GiveItemCreate("c#br0003","C#Brandock",0,0,0)
+		GiveItemCreate("c#br0007","C#Brandock",0,0,0)
+
+END

@@ -1,0 +1,576 @@
+/* Brandock's main script - valid for BG1 and BGII */
+
+/* party rested: reset variables */
+/* in case Brandock follows as 7th party member and Player1 was rested via script and not via  RestParty() */
+
+/* spell and priciple taken from Zed Nocear's BG1 Trigger Simulations! */
+
+IF
+	Global("C#BrandockRestCounter","GLOBAL",1)
+	RealGlobalTimerExpired("C#7thPartyMemberRestAfterTimer","GLOBAL")
+	CombatCounter(0)
+	!See([ENEMY])
+THEN
+	RESPONSE #100
+		SetGlobal("C#BrandockRestCounter","GLOBAL",0)
+END
+
+/* party rested. make sure Brandock is rested, too (in case rest was scripted and not via RestParty() ) */
+IF
+	Global("C#BrandockRestCounter","GLOBAL",0)
+	!RealGlobalTimerExpired("C#7thPartyMemberRestAfterTimer","GLOBAL")
+	Global("C#BrandockJoined","GLOBAL",2)
+	InMyArea(Player1)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("C#BrandockRestCounter","GLOBAL",1)
+		Rest()
+		ReallyForceSpellRES("c#7rest",Myself)
+		SetInterrupt(TRUE)	
+END
+
+
+
+/* follows as familiar: reset variable for refreshing of min HP spell after fight */
+
+IF
+	Global("C#Brandock_Has1HPEffect","GLOBAL",2)
+	Global("C#BrandockJoined","GLOBAL",2)  //follows as 7th party member
+	CombatCounter(0)
+	!See([ENEMY])
+THEN
+	RESPONSE #100
+		SetGlobal("C#Brandock_Has1HPEffect","GLOBAL",1)
+END
+
+/* refresh min HP spell before a fight */
+IF
+	Global("C#Brandock_Has1HPEffect","GLOBAL",1)
+	Global("C#BrandockJoined","GLOBAL",2)  //follows as 7th party member
+	!CombatCounter(0)
+	See([ENEMY])
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		SetGlobal("C#Brandock_Has1HPEffect","GLOBAL",2)
+		ReallyForceSpellRES("C#MIN5HP","C#Brandock")
+		SetInterrupt(TRUE)
+END
+
+
+/* follows as familiar: fight is over - Brandock had passed out at 1 HP. Regains consciousness and gets healing boost to be ready to be taken into the group and not die upon joining the group */
+
+IF
+	Global("C#Brandock_IsUnconscious","GLOBAL",1)
+	Global("C#BrandockJoined","GLOBAL",2)  //follows as 7th party member
+	CombatCounter(0)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		ReallyForceSpellRES("c#7rest","C#Brandock")    // Cures effects and restores health - taken from Argent77's Djinni Companion with many thanks	
+		SetGlobal("C#Brandock_IsUnconscious","GLOBAL",0)		
+		DisplayStringHead(Myself,@1001)
+		MakeGlobal()
+		ChangeEnemyAlly(Myself, FAMILIAR)
+		AddFamiliar()	
+		ActionOverride("C#Brandock",SetDialog("c#brandj"))
+		ChangeAIScript("DEFAULT",CLASS)
+		ChangeAIScript("",RACE)
+		ChangeAIScript("",GENERAL)
+		ChangeAIScript("",DEFAULT)		
+		DisplayStringHead(Myself,@1002)
+		SetInterrupt(TRUE)
+END
+
+/* follows as familiar: fight ends - resetting health warn variable */
+IF
+	Global("C#Brandock_HPAlarmDone","LOCALS",1)
+	Global("C#BrandockJoined","GLOBAL",2)  //follows as 7th party member
+	CombatCounter(0)
+THEN
+	RESPONSE #100
+		SetGlobal("C#Brandock_HPAlarmDone","LOCALS",0)
+END
+
+/* follows as familiar: Brandock warns about HP too low: auto pause. This can be switsched on and off via PID */
+
+IF
+	Global("C#HPAlarm","LOCALS",1)  //PC told Brandock to warn
+	Global("C#Brandock_HPAlarmDone","LOCALS",0)
+	Global("C#BrandockJoined","GLOBAL",2)  //follows as 7th party member
+	!CombatCounter(0)
+	HPPercentLT(Myself,45)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,@1003)
+		SetGlobal("C#Brandock_HPAlarmDone","LOCALS",1)
+		PauseGame()
+END
+
+/* follows as familiar: Brandock warns about HP too low: no auto pause. This can be switsched on and off via PID */
+
+IF
+	Global("C#HPAlarm","LOCALS",0)  //PC told Brandock not to warn
+	Global("C#Brandock_HPAlarmDone","LOCALS",0)
+	Global("C#BrandockJoined","GLOBAL",2)  //follows as 7th party member
+	!CombatCounter(0)
+	HPPercentLT(Myself,45)
+THEN
+	RESPONSE #100
+		DisplayStringHead(Myself,@1003)
+		SetGlobal("C#Brandock_HPAlarmDone","LOCALS",1)
+END
+
+
+
+/* follows as familiar: Brandock passes out if at 1 HP and following as a 7th party member (otherwise he would be a killing machine) */
+
+IF
+	Global("C#Brandock_IsUnconscious","GLOBAL",0)
+	Global("C#BrandockJoined","GLOBAL",2)  //follows as 7th party member
+	!CombatCounter(0)
+	Range(NearestEnemyOf(Myself),10)
+	HPLT(Myself,6)
+THEN
+	RESPONSE #100
+		SetInterrupt(FALSE)
+		DisplayStringHead(Myself,@1004) 
+		ClearActions(Myself)
+		RemoveFamiliar()
+		ChangeEnemyAlly(Myself,NEUTRAL)
+		ChangeAIScript("",CLASS)
+		ChangeAIScript("",RACE)
+		ChangeAIScript("",GENERAL)
+		ChangeAIScript("",DEFAULT)	
+		SetGlobal("C#Brandock_IsUnconscious","GLOBAL",1)
+		SetInterrupt(TRUE)
+END
+
+/* follows as familiar: Brandock is at 1 HP and passes out */
+IF
+	Global("C#Brandock_IsUnconscious","GLOBAL",1)
+	!CombatCounter(0)
+THEN
+	RESPONSE #100
+		PlayDead(100)
+END
+
+
+
+
+/* following as familiar/7th party member. Give 1 HP effect */
+
+IF
+	!InParty(Myself)
+	Global("C#BrandockJoined","GLOBAL",2)
+	Global("C#Brandock_Has1HPEffect","GLOBAL",0)
+THEN
+  RESPONSE #100
+		SetInterrupt(FALSE)
+		ReallyForceSpellRES("c#7rest","C#Brandock") //make sure there is no negative effect
+		ReallyForceSpellRES("C#MIN5HP","C#Brandock") //give him min 5 HP and immunities
+		SetGlobal("C#Brandock_Has1HPEffect","GLOBAL",1)
+		IncrementGlobal("C#7thPartyMemberRestCounter","GLOBAL",1) //needed for Brandock's spell regeneration
+		SetInterrupt(TRUE)	
+END
+
+
+/* Brandock joined the party as full member. remove 1 HP effect */
+
+IF
+	InParty(Myself)
+	!Global("C#Brandock_Has1HPEffect","GLOBAL",0)
+THEN
+  RESPONSE #100
+		SetInterrupt(FALSE)
+		ReallyForceSpellRES("C#MIN0HP","C#Brandock")
+		SetGlobal("C#Brandock_Has1HPEffect","GLOBAL",0)
+		IncrementGlobal("C#7thPartyMemberRestCounter","GLOBAL",-1)
+		SetInterrupt(TRUE)
+END
+
+
+/* more general stuff. Could happen in BG1 (SoD) or BGII */
+
+/* possessions/ bookrestore: book is not in Brandock's inventory */
+
+/* destroyed book is in Brandock's inventory. set variable to "0" */
+IF %BGT_VAR%
+	GlobalGT("C#Brandock_BookWarningLokal1","GLOBAL",0) 
+	OR(2)
+		HasItem("c#br0001",Myself)
+		HasItem("c#br0001",Player1)
+	OR(2) InParty(Myself) Global("C#BrandockJoined","GLOBAL",2)
+	See(Player1)
+	!Detect([ENEMY])
+	CombatCounter(0)
+THEN
+	RESPONSE #100
+		SetGlobal("C#Brandock_BookWarningLokal1","GLOBAL",0) 
+END
+
+/* restored book was collected. set variable to "0" */
+IF 
+	GlobalGT("C#Brandock_BookWarningLokal2","GLOBAL",0)
+	OR(22)
+		HasItem("c#br0007",Myself)
+		HasItem("c#br0007",Player1)
+		HasItem("c#brbo01",Myself)
+		HasItem("c#brbo01",Player1)
+		HasItem("c#brbo02",Myself)
+		HasItem("c#brbo02",Player1)
+		HasItem("c#brbo03",Myself)
+		HasItem("c#brbo03",Player1)
+		HasItem("c#brbo04",Myself)
+		HasItem("c#brbo04",Player1)
+		HasItem("c#brbo05",Myself)
+		HasItem("c#brbo05",Player1)
+		HasItem("c#brbo06",Myself)
+		HasItem("c#brbo06",Player1)
+		HasItem("c#brbo07",Myself)
+		HasItem("c#brbo07",Player1)
+		HasItem("c#brbo08",Myself)
+		HasItem("c#brbo08",Player1)
+		HasItem("c#brbo09",Myself)
+		HasItem("c#brbo09",Player1)
+		HasItem("c#brbo10",Myself)
+		HasItem("c#brbo10",Player1)
+	OR(2) InParty(Myself) Global("C#BrandockJoined","GLOBAL",2)
+	See(Player1)
+	!Detect([ENEMY])
+	CombatCounter(0)
+THEN
+	RESPONSE #100
+		SetGlobal("C#Brandock_BookWarningLokal2","GLOBAL",0) 
+END
+
+/* destroyed book is not in Brandock's inventory. Warning (no action) */
+/* Activate timer */
+IF %BGT_VAR%
+	Global("C#Brandock_BookWarningLokal1","GLOBAL",0) 
+	GlobalGT("C#Brandock_Possessions","GLOBAL",1) 
+	!GlobalGT("C#Br_BookRestore","GLOBAL",4)
+	!HasItem("c#br0001",Myself)
+	!HasItem("c#br0001",Player1)
+	PartyHasItem("c#br0001")
+	OR(2) InParty(Myself) Global("C#BrandockJoined","GLOBAL",2)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	See(Player1)
+	!Detect([ENEMY])
+	!Detect([EVILBUTBLUE])
+	CombatCounter(0)
+THEN
+	RESPONSE #100
+		RealSetGlobalTimer("C#Brandock_BWarningLokal1_T","GLOBAL",15)
+		SetGlobal("C#Brandock_BookWarningLokal1","GLOBAL",1) 
+END
+
+/* activate #2: timer run out */
+IF 
+	RealGlobalTimerExpired("C#Brandock_BWarningLokal1_T","GLOBAL")
+	Global("C#Brandock_BookWarningLokal1","GLOBAL",1) 
+OR(2) InParty(Myself) Global("C#BrandockJoined","GLOBAL",2)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	See(Player1)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	CombatCounter(0)
+	!See([ENEMY])
+THEN
+	RESPONSE #100
+		SetGlobal("C#Brandock_BookWarningLokal1","GLOBAL",2) 
+END
+/* restored book is not in Brandock's inventory. Warning (no action) */
+/* Activate timer */
+IF 
+	Global("C#Brandock_BookWarningLokal2","GLOBAL",0) 
+	GlobalGT("C#Br_BookRestore","GLOBAL",4)
+	GlobalLT("C#Br_WriteBook","LOCALS",11) //Brandock doesn't care any more when it's finished
+	!InMyArea("DOGHMA")
+	!HasItem("c#br0007",Myself)
+	!HasItem("c#br0007",Player1)
+	!HasItem("c#brbo01",Myself)
+	!HasItem("c#brbo01",Player1)
+	!HasItem("c#brbo02",Myself)
+	!HasItem("c#brbo02",Player1)
+	!HasItem("c#brbo03",Myself)
+	!HasItem("c#brbo03",Player1)
+	!HasItem("c#brbo04",Myself)
+	!HasItem("c#brbo04",Player1)
+	!HasItem("c#brbo05",Myself)
+	!HasItem("c#brbo05",Player1)
+	!HasItem("c#brbo06",Myself)
+	!HasItem("c#brbo06",Player1)
+	!HasItem("c#brbo07",Myself)
+	!HasItem("c#brbo07",Player1)
+	!HasItem("c#brbo08",Myself)
+	!HasItem("c#brbo08",Player1)
+	!HasItem("c#brbo09",Myself)
+	!HasItem("c#brbo09",Player1)
+	!HasItem("c#brbo10",Myself)
+	!HasItem("c#brbo10",Player1)
+	OR(11)
+		PartyHasItem("c#br0007")
+		PartyHasItem("c#brbo01")
+		PartyHasItem("c#brbo02")
+		PartyHasItem("c#brbo03")
+		PartyHasItem("c#brbo04")
+		PartyHasItem("c#brbo05")
+		PartyHasItem("c#brbo06")
+		PartyHasItem("c#brbo07")
+		PartyHasItem("c#brbo08")
+		PartyHasItem("c#brbo09")
+		PartyHasItem("c#brbo10")
+	OR(2) InParty(Myself) Global("C#BrandockJoined","GLOBAL",2)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	See(Player1)
+	!Detect([ENEMY])
+	!Detect([EVILBUTBLUE])
+	CombatCounter(0)
+THEN
+	RESPONSE #100
+		RealSetGlobalTimer("C#Brandock_BWarningLokal2_T","GLOBAL",15)
+		SetGlobal("C#Brandock_BookWarningLokal2","GLOBAL",1) 
+END
+/* activate #2: timer run out */
+IF 
+	GlobalLT("C#Br_WriteBook","LOCALS",11) //Brandock doesn't care any more when it's finished
+	RealGlobalTimerExpired("C#Brandock_BWarningLokal2_T","GLOBAL")
+	Global("C#Brandock_BookWarningLokal2","GLOBAL",1) 
+OR(2) InParty(Myself) Global("C#BrandockJoined","GLOBAL",2)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	See(Player1)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	CombatCounter(0)
+	!See([ENEMY])
+THEN
+	RESPONSE #100
+		SetGlobal("C#Brandock_BookWarningLokal2","GLOBAL",2) 
+END
+/* Initiate */
+IF 
+	OR(2)
+		Global("C#Brandock_BookWarningLokal1","GLOBAL",2)
+		Global("C#Brandock_BookWarningLokal2","GLOBAL",2) 
+OR(2) InParty(Myself) Global("C#BrandockJoined","GLOBAL",2)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	See(Player1)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	CombatCounter(0)
+	!See([ENEMY])
+THEN
+	RESPONSE #100
+		StartDialogueNoSet(Player1)
+END
+
+/* possessions/ bookrestore: book is gone from group's inventory */
+
+/* destroyed or restored book was collected. set variable to "0" */
+IF %BGT_VAR%
+	GlobalGT("C#Brandock_BookWarning","GLOBAL",0) 
+	OR(24)
+		HasItem("c#br0001",Myself)
+		PartyHasItem("c#br0001")
+		HasItem("c#br0007",Myself)
+		PartyHasItem("c#br0007")
+		HasItem("c#brbo01",Myself)
+		PartyHasItem("c#brbo01")
+		HasItem("c#brbo02",Myself)
+		PartyHasItem("c#brbo02")
+		HasItem("c#brbo03",Myself)
+		PartyHasItem("c#brbo03")
+		HasItem("c#brbo04",Myself)
+		PartyHasItem("c#brbo04")
+		HasItem("c#brbo05",Myself)
+		PartyHasItem("c#brbo05")
+		HasItem("c#brbo06",Myself)
+		PartyHasItem("c#brbo06")
+		HasItem("c#brbo07",Myself)
+		PartyHasItem("c#brbo07")
+		HasItem("c#brbo08",Myself)
+		PartyHasItem("c#brbo08")
+		HasItem("c#brbo09",Myself)
+		PartyHasItem("c#brbo09")
+		HasItem("c#brbo10",Myself)
+		PartyHasItem("c#brbo10")
+	OR(2) InParty(Myself) Global("C#BrandockJoined","GLOBAL",2)
+	See(Player1)
+	!Detect([ENEMY])
+	CombatCounter(0)
+THEN
+	RESPONSE #100
+		SetGlobal("C#Brandock_BookWarning","GLOBAL",0) 
+END
+
+/* destroyed book gone - talk one */
+/* Activate */
+IF %BGT_VAR%
+	Global("C#Brandock_BookWarning","GLOBAL",0) 
+	GlobalGT("C#Brandock_Possessions","GLOBAL",1) 
+	!GlobalGT("C#Br_BookRestore","GLOBAL",4)
+	!HasItem("c#br0001",Myself)
+	!PartyHasItem("c#br0001")
+	OR(2) InParty(Myself) Global("C#BrandockJoined","GLOBAL",2)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	See(Player1)
+	!Detect([ENEMY])
+	!Detect([EVILBUTBLUE])
+	CombatCounter(0)
+THEN
+	RESPONSE #100
+		RealSetGlobalTimer("C#BrandockBookTimer","GLOBAL",30)
+		SetGlobal("C#Brandock_BookWarning","GLOBAL",1) 
+END
+
+/* restored book gone - talk one */
+/* Activate */
+IF 
+	Global("C#Brandock_BookWarning","GLOBAL",0) 
+	GlobalGT("C#Br_BookRestore","GLOBAL",4)
+	GlobalLT("C#Br_WriteBook","LOCALS",11) //Brandock doesn't care any more when it's finished
+	!InMyArea("DOGHMA")
+	!HasItem("c#br0007",Myself)
+	!PartyHasItem("c#br0007")
+	!HasItem("c#brbo01",Myself)
+	!PartyHasItem("c#brbo01")
+	!HasItem("c#brbo02",Myself)
+	!PartyHasItem("c#brbo02")
+	!HasItem("c#brbo03",Myself)
+	!PartyHasItem("c#brbo03")
+	!HasItem("c#brbo04",Myself)
+	!PartyHasItem("c#brbo04")
+	!HasItem("c#brbo05",Myself)
+	!PartyHasItem("c#brbo05")
+	!HasItem("c#brbo06",Myself)
+	!PartyHasItem("c#brbo06")
+	!HasItem("c#brbo07",Myself)
+	!PartyHasItem("c#brbo07")
+	!HasItem("c#brbo08",Myself)
+	!PartyHasItem("c#brbo08")
+	!HasItem("c#brbo09",Myself)
+	!PartyHasItem("c#brbo09")
+	!HasItem("c#brbo10",Myself)
+	!PartyHasItem("c#brbo10")
+	OR(2) InParty(Myself) Global("C#BrandockJoined","GLOBAL",2)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	See(Player1)
+	!Detect([ENEMY])
+	!Detect([EVILBUTBLUE])
+	CombatCounter(0)
+THEN
+	RESPONSE #100
+		RealSetGlobalTimer("C#BrandockBookTimer","GLOBAL",30)
+		SetGlobal("C#Brandock_BookWarning","GLOBAL",2) 
+END
+
+/* activate dialogue after short timer run out */
+IF 
+	GlobalTimerExpired("C#BrandockBookTimer","GLOBAL")
+	GlobalLT("C#Br_WriteBook","LOCALS",11) //Brandock doesn't care any more when it's finished
+	OR(2)
+		Global("C#Brandock_BookWarning","GLOBAL",1)
+		Global("C#Brandock_BookWarning","GLOBAL",2)
+	OR(2) InParty(Myself) Global("C#BrandockJoined","GLOBAL",2) 
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	See(Player1)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	CombatCounter(0)
+	!See([ENEMY])
+THEN
+	RESPONSE #100
+		IncrementGlobal("C#Brandock_BookWarning","GLOBAL",2)
+END
+
+/* Initiate dialogue and setting second timer */
+IF 
+	OR(2)
+		Global("C#Brandock_BookWarning","GLOBAL",3)
+		Global("C#Brandock_BookWarning","GLOBAL",4)
+OR(2) InParty(Myself) Global("C#BrandockJoined","GLOBAL",2) 
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	See(Player1)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	CombatCounter(0)
+	!See([ENEMY])
+THEN
+	RESPONSE #100
+		SetGlobalTimer("C#BrandockBookTimer","GLOBAL",TWO_DAYS)
+		StartDialogueNoSet(Player1)
+END
+
+/* Book warning - timer run out. Brandock will leave */
+/* Activate */
+IF 
+	GlobalTimerExpired("C#BrandockBookTimer","GLOBAL")
+	GlobalLT("C#Br_WriteBook","LOCALS",11) //Brandock doesn't care any more when it's finished
+	OR(2)
+		Global("C#Brandock_BookWarning","GLOBAL",5)
+		Global("C#Brandock_BookWarning","GLOBAL",6) 
+	GlobalGT("C#Br_BookRestore","GLOBAL",4)
+	!HasItem("c#br0001",Myself)
+	!PartyHasItem("c#br0001")
+	!HasItem("c#br0007",Myself)
+	!PartyHasItem("c#br0007")
+	OR(2) InParty(Myself) Global("C#BrandockJoined","GLOBAL",2)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	See(Player1)
+	!Detect([ENEMY])
+	!Detect([EVILBUTBLUE])
+	CombatCounter(0)
+THEN
+	RESPONSE #100
+		SetGlobal("C#Brandock_BookWarning","GLOBAL",7) 
+END
+
+/* Initiate */
+IF 
+	Global("C#Brandock_BookWarning","GLOBAL",7) 
+OR(2) InParty(Myself) Global("C#BrandockJoined","GLOBAL",2)
+	!StateCheck(Myself,CD_STATE_NOTVALID)
+	See(Player1)
+	!StateCheck(Player1,CD_STATE_NOTVALID)
+	CombatCounter(0)
+	!See([ENEMY])
+THEN
+	RESPONSE #100
+		StartDialogueNoSet(Player1)
+END
+
+
+
+
+/* start banter script if not in party */
+/* SoD: faster timer */
+IF
+	%IT_IS_SOD%
+	Global("C#BrandockJoined","GLOBAL",2)
+	RealGlobalTimerExpired("C#BrandockNPCBanterTimer","GLOBAL")
+	CombatCounter(0)
+	!See([ENEMY])
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		RealSetGlobalTimer("C#BrandockNPCBanterTimer","GLOBAL",1800)
+		Interact(Player1)
+END
+
+IF
+	Global("C#BrandockJoined","GLOBAL",2)
+	RealGlobalTimerExpired("C#BrandockNPCBanterTimer","GLOBAL")
+	CombatCounter(0)
+	!See([ENEMY])
+	ActionListEmpty()
+THEN
+	RESPONSE #100
+		RealSetGlobalTimer("C#BrandockNPCBanterTimer","GLOBAL",3000)
+		Interact(Player1)
+END
+
+
+
+

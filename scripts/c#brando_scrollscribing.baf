@@ -1,0 +1,165 @@
+/* scroll scribing: variable is set via "Scribe Scolls" ability */
+/* Initiation */
+IF
+  !AreaCheck("%Beregost_FirebeadsHouse_L1%")
+  OR(2) InParty(Myself) Global("C#BrandockJoined","GLOBAL",2)
+  !See([ENEMY])
+  CombatCounter(0)
+//  See(Player1) 
+  !StateCheck(Myself,CD_STATE_NOTVALID)
+//  !StateCheck(Player1,CD_STATE_NOTVALID)
+  Global("c#brscrl","GLOBAL",1)
+THEN
+  RESPONSE #100
+    StartDialogNoSet(Myself)
+END
+
+/* in a hostile environment */
+IF
+  OR(2) InParty(Myself) Global("C#BrandockJoined","GLOBAL",2)
+  OR(2)
+  See([ENEMY])
+//  !CombatCounter(0)
+  StateCheck(Myself,CD_STATE_NOTVALID)
+//  See(Player1) 
+//  !StateCheck(Player1,CD_STATE_NOTVALID)
+  Global("c#brscrl","GLOBAL",1)
+THEN
+  RESPONSE #100
+    DisplayStringHead(Myself,@1286) 
+    SetGlobal("c#brscrl","GLOBAL",3)   
+END
+
+/* Party has Cursed Scroll of Weakness: identified */
+IF 	
+	OR(2) InParty(Myself) Global("C#BrandockJoined","GLOBAL",2)
+	!See([ENEMY])
+	CombatCounter(0)
+	PartyHasItemIdentified("SCRL10")
+	Global("C#Br_HasScrollSCRL10","LOCALS",0)
+THEN
+	RESPONSE #100
+		IncrementGlobal("C#Br_HasScrollSCRL10","LOCALS",1)
+END
+
+/* Party has Cursed Scroll of Clumsiness: identified */
+IF 	
+	OR(2) InParty(Myself) Global("C#BrandockJoined","GLOBAL",2)
+	!See([ENEMY])
+	CombatCounter(0)
+	PartyHasItemIdentified("SCRL11")
+	Global("C#Br_HasScrollSCRL11","LOCALS",0)
+THEN
+	RESPONSE #100
+		IncrementGlobal("C#Br_HasScrollSCRL11","LOCALS",1)
+END
+
+/* Party has Cursed Scroll of Foolishness: identified */
+IF 	
+	OR(2) InParty(Myself) Global("C#BrandockJoined","GLOBAL",2)
+	!See([ENEMY])
+	CombatCounter(0)
+	PartyHasItemIdentified("SCRL12")
+	Global("C#Br_HasScrollSCRL12","LOCALS",0)
+THEN
+	RESPONSE #100
+		IncrementGlobal("C#Br_HasScrollSCRL12","LOCALS",1)
+END
+
+/* Party has Cursed Scroll of Ugliness: identified */
+IF 	
+	OR(2) InParty(Myself) Global("C#BrandockJoined","GLOBAL",2)
+	!See([ENEMY])
+	CombatCounter(0)
+	PartyHasItemIdentified("SCRL13")
+	Global("C#Br_HasScrollSCRL13","LOCALS",0)
+THEN
+	RESPONSE #100
+		IncrementGlobal("C#Br_HasScrollSCRL13","LOCALS",1)
+END
+
+/* Party has Cursed Scroll of Summon Monster: identified */
+IF 	
+	OR(2) InParty(Myself) Global("C#BrandockJoined","GLOBAL",2)
+	!See([ENEMY])
+	CombatCounter(0)
+	PartyHasItemIdentified("SCRL14")
+	Global("C#Br_HasScrollSCRL14","LOCALS",0)
+THEN
+	RESPONSE #100
+		IncrementGlobal("C#Br_HasScrollSCRL14","LOCALS",1)
+END
+
+/* Party has Cursed Scroll of Petrification: identified */
+IF 	
+	OR(2) InParty(Myself) Global("C#BrandockJoined","GLOBAL",2)
+	!See([ENEMY])
+	CombatCounter(0)
+	PartyHasItemIdentified("SCRL16")
+	Global("C#Br_HasScrollSCRL16","LOCALS",0)
+THEN
+	RESPONSE #100
+		IncrementGlobal("C#Br_HasScrollSCRL16","LOCALS",1)
+END
+
+/* Party has Cursed Scroll of Ailment: identified */
+IF 	
+	OR(2) InParty(Myself) Global("C#BrandockJoined","GLOBAL",2)
+	!See([ENEMY])
+	CombatCounter(0)
+	PartyHasItemIdentified("SCRL17")
+	Global("C#Br_HasScrollSCRL17","LOCALS",0)
+THEN
+	RESPONSE #100
+		IncrementGlobal("C#Br_HasScrollSCRL17","LOCALS",1)
+END
+
+/* Party has Cursed Scroll of Stupidity: identified */
+IF 	
+	OR(2) InParty(Myself) Global("C#BrandockJoined","GLOBAL",2)
+	!See([ENEMY])
+	CombatCounter(0)
+	PartyHasItemIdentified("SCRL18")
+	Global("C#Br_HasScrollSCRL18","LOCALS",0)
+THEN
+	RESPONSE #100
+		IncrementGlobal("C#Br_HasScrollSCRL18","LOCALS",1)
+END
+
+/* gains scroll scribing ability - also always for newly spawned cre in SoD / BGII */
+IF
+	GlobalGT("C#Br_ScribeScrollQuest","GLOBAL",7)
+	Global("C#Br_GiveScribeAbility","LOCALS",0)
+THEN
+	RESPONSE #100
+		AddSpecialAbility("c#brscrl")
+		SetGlobal("C#Br_GiveScribeAbility","LOCALS",1)
+END
+
+/* initiate dialogue for some generic scribe scroll actions */
+IF
+	OR(2) InParty(Myself) Global("C#BrandockJoined","GLOBAL",2)
+	Global("c#brscrl","GLOBAL",2)
+	Global("C#Br_ScrollComment","LOCALS",0)
+	!Global("C#Br_ScribeBookComment","LOCALS",1)
+	!Global("C#Br_WriteDurableScrolls","LOCALS",3)
+	!Global("C#Br_WriteBook","LOCALS",7)
+	!InMyArea("C#Brhelp")
+THEN
+	RESPONSE #100
+		StartDialogNoSet([PC])
+END
+
+/* after generic scribe scroll actions: DisplayStringHead */
+IF
+	OR(2) InParty(Myself) Global("C#BrandockJoined","GLOBAL",2)
+	Global("c#brscrl","GLOBAL",2)
+	!Global("C#Br_ScribeBookComment","LOCALS",1)
+	!Global("C#Br_WriteDurableScrolls","LOCALS",3)
+	!Global("C#Br_WriteBook","LOCALS",7)
+	!InMyArea("C#Brhelp")
+THEN
+	RESPONSE #100
+		SetGlobal("c#brscrl","GLOBAL",3)
+		DisplayStringHead(Myself,@1287)
+END

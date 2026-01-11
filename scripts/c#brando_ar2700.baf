@@ -1,0 +1,10 @@
+IF %BGT_VAR%
+   OR(2) InParty("C#Brandock") Global("C#BrandockJoined","GLOBAL",2) 
+   InMyArea("C#Brandock") !StateCheck("C#Brandock",CD_STATE_NOTVALID)
+   Global("C#BrandockGorionDS","GLOBAL",0)	
+THEN
+	RESPONSE #100
+            SetGlobal("C#BrandockGorionDS","GLOBAL",1)
+	    CreateCreature("c#brspy1",[2865.1462],13) 
+	    Continue()
+END
