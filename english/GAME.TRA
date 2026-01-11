@@ -1,0 +1,598 @@
+@0  = ~Durable Scroll of Dispel Magic~
+//@1  = 
+//@2  = 
+@3  = ~Durable Scroll of Fireball~
+@4  = ~Brandock's Robe~
+@5  = ~This is the warmest robe Brandock could get when travelling far north from his home lands. Not that it is that warm where he comes from, but 'the nights are colder out here, I was told'. Plus, the coat is so thick it actually provides protection against missiles, which is quite handy for a mage.
+
+STATISTICS:
+
+Equipped abilities:
+Cold Resistance: +20%
+Armor Class: +1 vs. missile attacks
+
+Weight: 3~
+@6  = ~Brandock's Bookcase~
+@7  = ~Scrambled Book~
+@8  = ~This is the remains of what was once a *very* expensive magical book. Some pages are still readable, but it was gnawed on by several sets of small teeth, tearing the pages.~
+@9  = ~Brandock's Restored Book~
+@10  = ~This is the book that transformed after Elvenhair tried to preserve the paper shreds of the destroyed De Simplex Magicae: the first pages are written in Ruathlek, a rune language only known to some sages and Illusionists. The rest of the book is apparently empty, but flipping through the pages they seem to radiate magic.~ 
+@11  = ~This is Brandock's bookcase. It is for storing books and scrolls.~
+@12  = ~Ink of an Octopus~
+@13  = ~This is ink from an octopus. It is a rather expensive magic ingredient. You should only buy it if you know what you want to use it for.~
+@14  = ~Fish Store~
+@15  = ~Fisherman~
+@16  = ~Fine Pair of Boots~
+@17  = ~This is a pair of boots, and quite an expensive one, as it is. It was visibly dragged through the dirt, but with a brush and some enthusiasm it may be restored to its former appearance.~
+@18  = ~Fresh Salmon~
+@19  = ~This is a piece of fresh, juicy salmon.~
+@20  = ~This is a piece of fresh, juicy salmon.
+
+STATISTICS:
+
+Special: Restores 6 Hit Points.
+
+Weight: 1~
+@21  = ~Lore Bonus +1~
+@22  = ~Lore Bonus +2~
+@23  = ~Lore Bonus +3~
+@24  = ~Lore Increased by 1~
+@25  = ~Lore Increased by 2~
+@26  = ~Lore Increased by 3~
+
+/* new for vbeta 7 */
+@27  = ~Durable Scroll of Haste~
+@28  = ~Durable Scroll of Confusion~
+@29  = ~Durable Scroll of Improved Invisibility~
+@30  = ~Durable Scroll of Monster Summoning II~
+@31  = ~Durable Scroll of Breach~
+@32  = ~Durable Scroll of Protection From Acid~
+@33  = ~Durable Scroll of Magic Missile~
+@34  = ~Durable Scroll of Invisibility~
+@35  = ~Ranger~
+@36  = ~Malm~
+
+
+/* BGII */
+@100 = ~Ebrel's Spellbook~
+@101 = ~This is a spellbook that belonged to one of the Cowled Wizards who were killed by Irenicus at the Promenade. The name 'Ebrel Furborrow' is written inside.~
+
+
+/* new for vbeta 7 */
+@102 = ~Durable Scroll of Pierce Shield~
+@103 = ~De Simplex Magicae~
+/* SCRL1G: Fireball */
+@104 = ~This is a spell page Brandock wrote into the restored De Simplex Magicae. The magic of the book lets the page remain unharmed and the spell on it recharge once a day. 
+
+The spell on this page is:
+
+Fireball (Evocation) 
+Level: 3
+Range: Visual range of caster 
+Duration: Instantaneous 
+Casting Time: 3 
+Area of Effect: 15-foot radius
+Saving Throw: 1/2 
+
+A fireball is an explosive burst of flame, which detonates with a low roar and delivers damage proportional to the level of the wizard who cast it - 1d6 points of damage for each level of experience of the spellcaster (up to a maximum of 10d6). The wizard points his finger and speaks the range (distance and height) at which the fireball is to burst. A streak flashes from the pointing digit and, unless it impacts upon a material body or solid barrier prior to attaining the prescribed range, blossoms into the fireball (an early impact results in an early detonation). Creatures failing their saving throws each suffer full damage from the blast. Those who roll successful saving throws manage to dodge, fall flat, or roll aside, each receiving half.~ 
+/* SCRL6P: Minor Sequencer */
+@105 = ~This is a spell page Brandock wrote into the restored De Simplex Magicae. The magic of the book lets the page remain unharmed and the spell on it recharge once a day. 
+
+The spell on this page is:
+
+Minor Sequencer (Invocation/Evocation) 
+Level: 4
+Range: 0
+Duration: Permanent
+Casting Time: 1 round 
+Area of Effect: Special 
+Saving Throw: None 
+
+This spell allows a mage to store spells and access them from his special ability button.  This ability, the sequencer, can store two spells to be released simultaneously,  both of which must be of 2nd level or lower.  A mage can only possess one minor spell sequencer at a time, and the sequencer may not be given to other players.  Once the sequencer is used, the special ability icon disappears.~
+/* SCRL6U: Breach */
+@106 = ~This is a spell page Brandock wrote into the restored De Simplex Magicae. The magic of the book lets the page remain unharmed and the spell on it recharge once a day. 
+
+The spell on this page is:
+
+Breach (Abjuration) 
+Level: 5
+Range: Visual sight of caster 
+Duration: Instant
+Casting Time: 5
+Area of Effect: Target Creature
+Saving Throw: None
+
+When this spell is cast at a creature, it breaches and dispels all of the specific and combat protections on the target creature.  Here is a complete list of all the specific protection spells that are dispelled by breach:  Shield, Protection Circle, Resist Fear, Protection From Fire/Cold, Fireshield, Protection From Acid, Protection From Electricity, Protection From Magic Energy, Protection From The Elements, and Protection From Energy.   The combat protection spells dispelled by this spell are: Protection From Normal Missiles, Protection From Normal Weapons, Protection From Magic Weapons, Stoneskin, Armor, Ghost Armor, Spirit Armor, Absolute Immunity, Mantle, and Improved Mantle.  The target's magic resistance, if he has any, does not affect this spell.~
+/* SCRL7V: Spell Deflection */
+@107 = ~This is a spell page Brandock wrote into the restored De Simplex Magicae. The magic of the book lets the page remain unharmed and the spell on it recharge once a day. 
+
+The spell on this page is:
+
+Spell Deflection (Abjuration)
+Level: 6
+Range: 0 
+Duration: 3 rounds/level
+Casting Time: 6
+Area of Effect: The caster 
+Saving Throw: None 
+
+This powerful abjuration spell causes any spells cast against the wizard to be absorbed and consumed.  This affects a total of 10 spell levels.  This includes spells cast from scrolls and innate spell-like abilities, but excludes the following: area effects that are not centered directly upon the wizard as well as area effects that are stationary, such as cloud kill and stinking cloud.  As long as the spell is cast directly at the wizard it will be absorbed.  Something to note is that as long as there are levels remaining then the spell will be absorbed.  For example, if there is only 1 level left and a 3rd-level spell is cast at the wizard, the spell will be absorbed while canceling the spell deflection.  It is not affected by a dispel magic.~
+/* SCRL8W: Mass Invisibility */
+@108 = ~This is a spell page Brandock wrote into the restored De Simplex Magicae. The magic of the book lets the page remain unharmed and the spell on it recharge once a day. 
+
+The spell on this page is:
+
+Mass Invisibility 
+(Illusion/Phantasm) 
+Level: 7
+Range: Visual sight of caster 
+Duration: 1 round/level
+Casting Time: 7
+Area of Effect: 15-foot radius
+Saving Throw: None 
+
+Upon casting this spell the wizard causes all friendly creatures within the area of effect to be affected by the spell Improved Invisibility.  This spell is similar to the invisibility spell, but the recipient is able to attack, either by missile discharge, melee combat, or spellcasting, and remain unseen. Note, however, that there are sometimes telltale traces, a shimmering, so that an observant opponent can attack the invisible spell recipient. These traces are only noticeable when specifically looked for (after the invisible character has made his presence known).  Attacks against the invisible character suffer -4 penalties to the attack rolls, and the invisible character's saving throws are made with a +4 bonus.~
+/* SCRL8S: Summon Efreeti */
+@109 = ~This is a spell page Brandock wrote into the restored De Simplex Magicae. The magic of the book lets the page remain unharmed and the spell on it recharge once a day. 
+
+The spell on this page is:
+
+Summon Efreeti (Conjuration/Summoning) 
+Level: 7
+Range: 40 yards 
+Duration: 8 rounds + 1 round/level
+Casting Time: 1 round
+Area of Effect: Special 
+Saving Throw: None
+
+With this spell, the conjurer can cajole an efreeti, a massive genie with powerful abilities, to leave the elemental plane of fire and enter the Prime Material.  The efreeti will serve for the duration indicated above, attacking the enemies of the conjurer.  Mages are warned to be careful of this spell, for a mistreated efreeti will turn on his master at the first available opportunity.~
+/* SCRLB1: Bigby's Clenched Fist */
+@110 = ~This is a spell page Brandock wrote into the restored De Simplex Magicae. The magic of the book lets the page remain unharmed and the spell on it recharge once a day. 
+
+The spell on this page is:
+
+Bigby's Clenched Fist (Evocation) 
+Level: 8
+Range: Visual range of caster
+Duration: 4 Rounds  
+Casting Time: 8 
+Area of Effect: 1 creature
+Saving Throw: Special
+
+This spell causes a giant disembodied hand to squeeze and constrict the target once per round for up to four rounds. It initially smashes the target for 3D6 damage with no save. The target is held. In the second round, the target can save vs. paralyzation at -2 to escape. If they fail to save, the hand does 4D6 damage. The following round, the target can save vs. paralyzation with no penalty. If they make the save, they are free to move, if they fail, the spell does 6D6 damage and holds them for 2 rounds. After the 4th round, the spell is finished. Magic resistance will stop the spell.~
+/* SCRL9A: Pierce Shield */
+@111 = ~This is a spell page Brandock wrote into the restored De Simplex Magicae. The magic of the book lets the page remain unharmed and the spell on it recharge once a day. 
+
+The spell on this page is:
+
+Pierce Shield (Abjuration)
+Level: 8
+Range: Visual sight of caster
+Duration: Instantaneous
+Casting Time: 8
+Area of Effect: Special
+Saving Throw: None 
+
+When this spell is cast it launches a massive attack on an enemy wizard's spell defenses.  The target's magic resistance will be lowered by 10% + 1% per level of the caster.  Next pierce shield will cancel one spell protection of any level.  For example, if this spell was cast by a 15th-level wizard the target creature would lose 25% magic resistance from his current total, reducing it to 0 if less than that remains, as well as cancelling one spell protection if the mage currently has one.  The list of spells that this includes is: Minor Spell Deflection, Minor Spell Turning, Spell Deflection, Minor Globe of Invulnerability, Spell Immunity, Globe Of Invulnerability, Spell Turning, Spell Shield, and Spell Trap.  Magic resistance does not effect this spell, nor do any of the spell protections.  The resistance remains lowered for 1 round per level of the caster.  It cannot be dispelled.~
+/* SCRLB2: Bigby's Crushing Hand */
+@112 = ~This is a spell page Brandock wrote into the restored De Simplex Magicae. The magic of the book lets the page remain unharmed and the spell on it recharge once a day. 
+
+The spell on this page is:
+
+Bigby's Crushing Hand (Evocation) 
+Level: 9
+Range: Visual range of caster
+Duration: 3 Rounds  
+Casting Time: 9
+Area of Effect: 1 creature
+Saving Throw: Special
+
+This spell creates a huge disembodied fist that crushes the target and pins them to the ground. In the first round, the spell does 2D10 damage. The victim can save at -4 vs. paralyzation to avoid being pinned. If they fail, the hand does 3D10 damage the next round. The victim can again save vs. paralyzation at -2. If they fail to save, the hand does a final 4D10 damage and disappears.~
+/* SCRL9Q: Chain Contingency */
+@113 = ~This is a spell page Brandock wrote into the restored De Simplex Magicae. The magic of the book lets the page remain unharmed and the spell on it recharge once a day. 
+
+The spell on this page is:
+
+Chain Contingency (Evocation)
+Level: 9
+Range: 0
+Duration: Special
+Casting Time: 1 round
+Area of Effect: The Caster
+Saving Throw: None
+
+Chain contingency channels some of the magical energy of the mage and releases it only under certain circumstances.  Basically, the mage chooses three spells, which will be released under certain conditions, such as being hit by an enemy.  When this condition occurs all three spells are cast immediately.  Spells of 8th level or lower may be used in the contingency.~
+@114  = ~Turn a page.~
+/* #39427 */
+@115  = ~This ancient tome creaks as you open it.  Each page of the Book of Infinite Spells contains a spell described in layman's terms, easy enough for a thief, a cleric or even a fighter to understand and cast it.  Each spell on a page can be cast once per day.
+
+Brandock changed the magic of the book, so now you can turn the pages back and forth - at least between the ones you opened for the original tome.
+
+The spell on this page is:
+
+Fireball (Evocation) 
+Level: 3
+Range: Visual range of caster 
+Duration: Instantaneous 
+Casting Time: 3 
+Area of Effect: 15-foot radius
+Saving Throw: 1/2 
+
+A fireball is an explosive burst of flame, which detonates with a low roar and delivers damage proportional to the level of the wizard who cast it - 1d6 points of damage for each level of experience of the spellcaster (up to a maximum of 10d6). The wizard points his finger and speaks the range (distance and height) at which the fireball is to burst. A streak flashes from the pointing digit and, unless it impacts upon a material body or solid barrier prior to attaining the prescribed range, blossoms into the fireball (an early impact results in an early detonation). Creatures failing their saving throws each suffer full damage from the blast. Those who roll successful saving throws manage to dodge, fall flat, or roll aside, each receiving half.~
+/* #39428 */
+@116  = ~This ancient tome creaks as you open it.  Each page of the Book of Infinite Spells contains a spell described in layman's terms, easy enough for a thief, a cleric or even a fighter to understand and cast it.  Each spell on a page can be cast once per day.
+
+Brandock changed the magic of the book, so now you can turn the pages back and forth - at least between the ones you opened for the original tome.
+
+The spell on this page is:
+
+Invisibility (Illusion/Phantasm) 
+Level: 2
+Range: Touch 
+Duration: Special 
+Casting Time: 2 
+Area of Effect: Creature touched 
+Saving Throw: None 
+
+This spell causes the creature touched to vanish from sight and be undetectable by normal vision or even infravision. Of course, the invisible creature is not magically silenced, and certain other conditions can render the creature detectable. Even allies cannot see the invisible creature or his gear, unless these allies can normally see invisible things or employ magic to do so.  Items dropped or put down by the invisible creature become visible, items picked up disappear if tucked into the clothing or pouches worn by the creature. The spell remains in effect until it is magically broken or dispelled, until the recipient attacks any creature, or until 24 hours have passed. The invisible being cannot open doors, talk, eat, climb stairs, etc., and if he attacks, he immediately becomes visible, although the invisibility enables him to attack first.~
+/* #39429 */
+@117  = ~This ancient tome creaks as you open it.  Each page of the Book of Infinite Spells contains a spell described in layman's terms, easy enough for a thief, a cleric or even a fighter to understand and cast it.  Each spell on a page can be cast once per day.
+
+Brandock changed the magic of the book, so now you can turn the pages back and forth - at least between the ones you opened for the original tome.
+
+The spell on this page is:
+
+Protection From Evil (Abjuration) 
+Level: 1
+Range: Touch 
+Duration: 2 rounds/level
+Casting Time: 1
+Area of Effect: Creature touched 
+Saving Throw: None 
+
+When this spell is cast, it creates a magical barrier around the recipient at a distance of one foot. The barrier moves with the recipient and has two major effects: First, all attacks made by evil or evilly enchanted creatures against the protected creature receive a penalty of - 2 to each attack roll, and second, any saving throws caused by such attacks are made by the protected creature with a +2 bonus.~
+/* #39430 */
+@118  = ~This ancient tome creaks as you open it.  Each page of the Book of Infinite Spells contains a spell described in layman's terms, easy enough for a thief, a cleric or even a fighter to understand and cast it.  Each spell on a page can be cast once per day.
+
+Brandock changed the magic of the book, so now you can turn the pages back and forth - at least between the ones you opened for the original tome.
+
+The spell on this page is:
+
+True Seeing (Divination) 
+Level: 5
+Sphere: Divination
+Range: 0
+Duration: 1 turn
+Casting Time: 8
+Area of Effect: 120-foot radius
+Saving Throw: None 
+
+When this spell is cast, an area roughly 120 feet in radius around the caster will be effected.  Instantly and once each round for 1 turn after this spell is cast, all hostile illusion/phantasm spells in the area of effect will be dispelled.  The spells that are affected by this are: Reflected Image, Invisibility, Mirror Image, Non-detection, Improved Invisibility, Shadow Door, Mislead, Project Image, and Simulacrum.  The area of effect is roughly a 120-foot radius around the caster.  The target's magic resistance, if any, does not come into effect with this spell.  This spell only affects enemies, thus it is unable to dispel the invisibility from a party member.~
+/* #39433 */
+@119  = ~This ancient tome creaks as you open it.  Each page of the Book of Infinite Spells contains a spell described in layman's terms, easy enough for a thief, a cleric or even a fighter to understand and cast it.  Each spell on a page can be cast once per day.
+
+Brandock changed the magic of the book, so now you can turn the pages back and forth - at least between the ones you opened for the original tome.
+
+The spell on this page is:
+
+Farsight (Divination)
+Level: 4
+Range: Special
+Duration: 3 rounds + 1 round/level
+Casting Time: 4 
+Area of Effect: Special
+Saving Throw: None 
+
+When Farsight is cast, the caster is able to view an area of an unexplored map.  After casting the spell, simply click on a section of the map that you want to view.  For the duration of the spell, the caster can spy on that area, noting creatures and fortifications.~
+/* #39434 */
+@120  = ~This ancient tome creaks as you open it.  Each page of the Book of Infinite Spells contains a spell described in layman's terms, easy enough for a thief, a cleric or even a fighter to understand and cast it.  Each spell on a page can be cast once per day.
+
+Brandock changed the magic of the book, so now you can turn the pages back and forth - at least between the ones you opened for the original tome.
+
+The spell on this page is:
+
+Spell Turning (Abjuration) 
+Level: 7
+Range: 0
+Duration: 3 rounds/level
+Casting Time: 7
+Area of Effect: The caster 
+Saving Throw: None 
+
+This powerful abjuration spell causes the spells cast against the wizard to rebound upon the original caster.  This effects a total of 12 spell levels, for example 4 3rd-level, or 1 6th and 1 7th-level, etc..  This includes spells cast from scrolls and innate spell-like abilities, but excludes the following: area effects that are not centered directly upon the wizard as well as area effects that are stationary such as cloud kill and stinking cloud.  As long as the spell is cast directly at the wizard it will be reflected back upon the caster.  Something to note is that as long as there are levels remaining then the spell will be reflected.  For example if there is only 1 level left and a 3rd-level spell is cast at the wizard, the spell will be reflected while canceling the spell turning.  This spell will not protect the caster from dispel magic.  However it will not be affected by dispel magic either.~
+/* #39435 */
+@121  = ~This ancient tome creaks as you open it.  Each page of the Book of Infinite Spells contains a spell described in layman's terms, easy enough for a thief, a cleric or even a fighter to understand and cast it.  Each spell on a page can be cast once per day.
+
+Brandock changed the magic of the book, so now you can turn the pages back and forth - at least between the ones you opened for the original tome.
+
+The spell on this page is:
+
+Wyvern Call (Conjuration/Summoning) 
+Level: 6
+Range: 40 yards 
+Duration: 1 round/level
+Casting Time: 1 round
+Area of Effect: Special 
+Saving Throw: None 
+
+When this spell is cast the wizard opens up a magical channel that will summon a wyvern to his aid.  This creature will be totally under his mental control with no chance of it turning on him except, of course, through magical means like charm monster.  The creature will remain under the wizard's control, and will live and die at his command until the spell duration expires.~
+/* #39436 */
+@122  = ~This ancient tome creaks as you open it.  Each page of the Book of Infinite Spells contains a spell described in layman's terms, easy enough for a thief, a cleric or even a fighter to understand and cast it.  Each spell on a page can be cast once per day.
+
+Brandock changed the magic of the book, so now you can turn the pages back and forth - at least between the ones you opened for the original tome.
+
+The spell on this page is:
+
+Stinking Cloud (Evocation) 
+Level: 2
+Range: 30 yards 
+Duration: 1 turn
+Casting Time: 2 
+Area of Effect: 15-foot radius
+Saving Throw: Special 
+
+When a stinking cloud is cast, the wizard creates a billowing mass of nauseous vapors up to 30 yards away from his position. Any creature caught within the cloud must roll a successful saving throw vs. poison or be reeling and fall down for 1-2 rounds.  Those who make successful saving throws can leave the cloud without suffering any ill effects, although those remaining in the cloud must continue to save each round.  A dispel magic will remove the nasea on a particular character, but if they remain in the cloud then they are still subject to its effects.~
+/* #39437 */
+@123  = ~This ancient tome creaks as you open it.  Each page of the Book of Infinite Spells contains a spell described in layman's terms, easy enough for a thief, a cleric or even a fighter to understand and cast it.  Each spell on a page can be cast once per day.
+
+Brandock changed the magic of the book, so now you can turn the pages back and forth - at least between the ones you opened for the original tome.
+
+The spell on this page is:
+
+Lightning Bolt (Evocation) 
+Level: 3
+Range: 40 yards + 10 yards/level
+Duration: Instantaneous 
+Casting Time: 3 
+Area of Effect: Special 
+Saving Throw: 1/2
+
+Upon casting this spell, the wizard releases a powerful stroke of electrical energy that inflicts 1d6 points of damage per level of the spellcaster (maximum damage of 10d6) to each creature within its area of effect. A successful saving throw vs. spell reduces this damage to half (round fractions down). The bolt begins at a range and height decided by the caster and streaks outward in a direct line from the casting wizard (e.g., if a 40-foot bolt was started at 180 feet from the wizard, the far end of bolt would reach 220 feet (180 + 40).  If the lightning bolt intersects with a wall it will bounce until it reaches its full length.~
+/* #39438 */
+@124  = ~This ancient tome creaks as you open it.  Each page of the Book of Infinite Spells contains a spell described in layman's terms, easy enough for a thief, a cleric or even a fighter to understand and cast it.  Each spell on a page can be cast once per day.
+
+Brandock changed the magic of the book, so now you can turn the pages back and forth - at least between the ones you opened for the original tome.
+
+The spell on this page is:
+
+Burning Hands (Alteration) 
+Level: 1
+Range: 5 feet  
+Duration: Instantaneous 
+Casting Time: 1 
+Area of Effect: 60 degree arc
+Saving Throw: 1/2
+
+When the wizard casts this spell, a jet of searing flame shoots from his fingertips. His hands must be held so as to send forth a fanlike sheet of flames: the wizard's thumbs must touch each other and fingers must be spread. The burning hands send out flame jets of five-foot length in a horizontal arc of about 60 degrees in front of the wizard. Any creature in the area of the flames suffers 1d3 hit points of damage, plus 2 points for each level of the spellcaster, to a maximum of 1d3 + 20 points of fire damage. Those successfully saving vs. spell receive half damage.~
+
+/* new for v13 */
+@125  = ~Scribe Scrolls
+It took Brandock a while to gather his courage but now he is able to scribe a scroll once a day. 
+The cost of any raw materials that are used in the process must be covered in full. Scrolls will consume gold in the making depending on the spell level:
+1st level spells: 50 gold
+2nd level spells: 100 gold
+3rd level spells: 150 gold
+4th level spells: 250 gold
+5th level spells: 500 gold
+6th level spells: 1000 gold
+7th level spells: 1500 gold
+8th level spells: 2500 gold
+9th level spells: 5000 gold.
+The scrolls he can write depends on his level as a mage and other experiences. He will also use these times to scribe any advanced scrolls or book pages he thought of after his book is restored and travelling a while with <CHARNAME>.~
+@126  = ~Shapeshift: Half-Ogre
+
+Strength: 18/85
+Dexterity: 9
+
+Base Armor Class: 5
+Number of Attacks: 1
+Attack Damage: 4d6 (crushing), strikes as +1 weapon
+
+Special Abilities: 
+– Increased movement rate~
+@127  = ~Shapeshift: Natural Form
+This will transform Brandock back into his human form. Despite his fears and panic attacks, he is able to return to his natural shape any time he wants.~
+
+/* Brandock cre things */
+@500 = ~Brandock~
+@501 = ~[in panic]I... I can't do this any more!~ [c#bran01] //SAY MORALE
+@502 = ~[cheerful]I really like being here!~ [c#bran27] //SAY HAPPY
+@503 = ~[unhappy]It doesn't have to be this way!~ [c#bran21] //SAY UNHAPPY_ANNOYED
+@504 = ~[irritated]I've had enough!~ [c#bran26] //SAY UNHAPPY_SERIOUS
+@505 = ~[angry]Sorry, but that's it!~ [c#bran02] //SAY UNHAPPY_BREAKING
+@506 = ~[insecure]Oh dear. Are you sure?~ [c#bran08] //SAY LEADER
+@507 = ~[tired]I need to rest again...~ [c#bran09] //SAY TIRED
+@508 = ~[curious, not annoyed]Are we going to remain here?~ [c#bran10] //SAY BORED
+@509 = ~[shouted]I... I can be mean if I have to!~ [c#bran03] //SAY BATTLE_CRY1
+@510 = ~[sighed]I guess we'll have to - again!~ [c#bran05] //SAY BATTLE_CRY2
+@511 = ~[shouted]Brace yourselves!~ [c#bran06] //SAY BATTLE_CRY3
+@512 = ~[sighed]Not again...~ [c#bran07] //SAY BATTLE_CRY4
+@513 = ~[shouted]Have at them!~ [c#bran04] //SAY BATTLE_CRY5
+@514 = ~[Pain sound]~ [c#bran25] //SAY DAMAGE
+@515 = ~[in pain]Not... not like this!~ [c#bran22] //SAY DYING
+@516 = ~[tormented]I... I need some help!~ [c#bran24] //SAY HURT
+@517 = ~I love the smell of moss and pine needles.~ [c#bran28] //SAY AREA_FOREST
+@518 = ~There are always so many people in the city!~ [c#bran29] //SAY AREA_CITY
+@519 = ~Somehow it's eerie here.~ [c#bran30] //SAY AREA_DUNGEON
+@520 = ~I like it when the sun shines! Except directly into my face, of course.~ [c#bran31] //SAY AREA_DAY
+@521 = ~At night it is always so... dark.~ [c#bran32] //SAY AREA_NIGHT
+@522 = ~[friendly]Yes?~ [c#bran11] //SAY SELECT_COMMON1
+@523 = ~[friendly]What do you want?~ [c#bran12] //SAY SELECT_COMMON2
+@524 = ~[friendly]What do you want me to do?~ [c#bran14] //SAY SELECT_COMMON3
+@525 = ~[loyal]Alright.~ [c#bran15] //SAY SELECT_ACTION1
+@526 = ~[loyal]I can do that.~ [c#bran13] //SAY SELECT_ACTION2 
+@527 = ~[loyal]I'll try.~ [c#bran16] //SAY SELECT_ACTION3 
+@528 = ~[loyal]Already on it!~ [c#bran17] //SAY SELECT_ACTION4
+@529 = ~[loyal]Fine.~ [c#bran18] //SAY SELECT_ACTION5
+@530 = ~[with more spirit]Alright!~ [c#bran19] //SAY SELECT_ACTION6
+@531 = ~[confirmative]Yes.~ [c#bran20] //SAY SELECT_ACTION7
+@532 = ~[sad]Oh, damn. I'll never get used to that.~ [c#bran23] //SAY REACT_TO_DIE_GENERAL
+@533 = ~When asked about his past, BRANDOCK DEEPWATER smiles apologetically and talks about his plans to become an acknowledged wizard. "There is not much to know about me", he adds. "I come from a normal family of farmers and carpenters - no magic talent, except for some distant mother's cousin."~
+@534 = ~M-hm?~ [c#bran33] //SAY SELECT_COMMON4
+@535 = ~I'm listening?~ [c#bran34] //SAY SELECT_COMMON5
+@536 = ~[as a friendly prompt]Say what you want!~ [c#bran35] //SAY SELECT_COMMON6
+@537 = ~By the gods! Don't startle me like that! What do you want?~ [c#bran36] //SAY SELECT_RARE1
+@538 = ~[triumphant]Yes!!~ [c#bran37] //SAY CRITICAL_HIT
+@539 = ~Damn, I missed!~ [c#bran38] //SAY CRITICAL_MISS
+@540 = ~My weapon doesn't seem to do anything.~ [c#bran39] //SAY TARGET_IMMUNE
+@541 = ~[apologetically]Sorry, but this really didn't fit in my backpack anymore.~ [c#bran40] //SAY INVENTORY_FULL
+@542 = ~Oh, crap! I got distracted.~ [c#bran41] //SAY SPELL_DISRUPTED
+
+
+/* scripts: DisplayStringHeads & Mapnotes */
+/* BG1 */
+@1000 = ~The table is full of tools and devices for alchemical experiments.~
+@1001 = ~Ahem!~
+@1002 = ~What a fight.~
+@1003 = ~Help! (Brandock's health seems to be low.)~
+@1004 = ~Ouch!~
+@1005 = ~Oh, what is...~
+@1006 = ~Now, this was most unexpected!~
+@1007 = ~Doppelganger?! Elvenhair is a doppelganger, too... This is is too much! This is TOO MUCH! Don't you dare having done anything to Master Elvenhair! Don't you DARE touch <CHARNAME>!~
+@1008 = ~This is my private quarters! HOW did you get in here? What are you doing?! I should smite you both without ...~
+@1009 = ~You are not plundering. You are searching?!...~
+@1010 = ~I never saw a half-ogre go through my library. Care to explain? Who are you?~
+@1011 = ~Me not half-ogre. Me mage. Me... (sigh) Words make head burn!~
+@1012 = ~Who am I? I am... I mean, theoretically speaking, I *was* the different acquaintance of another polymorphial being of very little intellectual habitus, if phrased in terms of principally conditions...~
+@1013 = ~He not speak clear. He dumb, with my brain! Me... bright, with his dumb brain! And clumsy hands... Need help!~
+@1014 = ~Alright, let me summarize. I see a mage who proclaims that he is not who he was.~
+@1015 = ~And I see a half-ogre who states that he would be the mage.~
+@1016 = ~And just when I thought the <DAYNIGHT> was getting dull. Come with me, then. Let me see what I can do for you.~
+@1017 = ~Oh dear, what a stink!~
+@1018 = ~Hm, let's see...~
+@1019 = ~This was most interesting! Thank you for taking the time, <CHARNAME>.~
+@1020 = ~The corner of the cave is full of tattered stuff. You feel absolutely no urge to go through it.~
+@1021 = ~Alright, am I the only one who thinks that this sounds a little bit alarming?~
+@1022 = ~Firebead Elvenhair's Home~
+@1023 = ~We have a Star Sapphire! Please, let us hold onto it. I need this for my book restoration.~
+@1024 = ~We have a Potion of Regeneration! Please, let us keep this. I need it for my book restoration.~
+@1025 = ~We have ink of an Octopus! This for my book restoration with Master Elvenhair, yes?~
+@1026 = ~I'll have a look into this mage's spellbook - oh yes, that is interesting.~
+@1027 = ~This mage's spellbook is an interesting read indeed.~
+@1028 = ~I can learn from this mage's spellbook.~
+@1029 = ~Two interresting spellbooks! I fear those won't be the last mages we meet.~
+@1030 = ~Hmm... no, nothing to learn from this spellbook. What a pity.~
+@1031 = ~Why did we kill this old woman? I'm not scavenging through possessions of people who did not attack us... ugh, dammit, of course I'll have a look at her spellbook. I'm not proud of what we did here, <CHARNAME>!~
+@1032 = ~Three interesting spellbooks! And I'm sure those won't be the last mages we meet here... (sigh)~
+@1033 = ~Oh, a library? Don't mind me, <CHARNAME>. I'll, er... (Brandock murmurs while scanning book covers.) Er, sorry about that. I'm done here, there's no magic books. At least none as far as I can see.~
+@1034 = ~I'll make sure I'll learn from those mages' spellbooks...~
+@1035 = ~Oh, a library! (Brandock murmurs while scanning book covers.) Hmm, no magic books, as far as I can see.~
+@1036 = ~Didn't seem to have helped him here - but this spellbook is still an interesting read.~
+@1037 = ~Three interesting spellbooks, but I'd prefer I wouldn't have had the chance to go through these...~
+@1038 = ~Today, Elvenhair's desk is loaded with magic books, tomes, and scrolls, some in languages you do not know. Brandock is already eyeing the titles, restraining himself visibly from touching the books.~
+@1039 = ~This is Elvenhair's desk. You see piles of books, scrolls, and a set of differently shaped quills.~
+@1040 = ~Magic books! Great books! Will help ...~
+
+/* new for v1 */
+@1041 = ~Wait - WHAT? A fiend? That child was a *fiend*?~
+
+/* SoD */
+@1250 = ~Hey, <CHARNAME>! <CHARNAME>, over here!~
+@1251 = ~Gods, I hope <PRO_HESHE> notices me!~
+@1252 = ~<CHARNAME>! Heyho, <CHARNAME>!~
+@1253 = ~Please, over here! (Pleeeease!)~
+@1254 = ~Wow... this was so stupid, that could have been me!~
+@1255 = ~Wow... what a huge spider leg!~
+@1256 = ~I am really glad Gavin isn't here right now!~
+@1257 = ~Wha... The dragon is dead. With one dagger. One dagger. You know, if someone'd tell me they killed a dragon, I *kind of* expect them to having done a, you know, kind of great deed with a, kind of, great fight, and... Alright, I give up, this is hilarious! (laughs)~
+@1258 = ~Woah, <CHARNAME>! I understand that you want them dead, but... That was... that was low.~
+@1259 = ~Wow - with this on my head I feel intelligent - and dumb - at the same time...~
+@1260 = ~Wohoo!~
+@1261 = ~*Now* I feel like a real wizard.~
+@1262 = ~So, this is the day of the great march. I *think* I'm glad to get out of the city. Let's see for how long...~
+@1263 = ~After we are finished here I guess I have no more excuses not to return home...~
+@1264 = ~It's over, <CHARNAME>. Sarevok and his scheme against you is gone.~
+@1265 = ~Maybe I'll stick around for a bit more, but I have to face the fact that it's time to return home.~
+@1266 = ~I guess there will be more where they came from...~
+@1267 = ~This woman is mad.... or blind. Or both!~
+@1268 = ~Whoa, <CHARNAME>, this cost a lot of lives... But was it more lives than would have been lost if we had fought - I don't know, and I am glad I didn't have to make this decision.~
+@1269 = ~Oh, we get a chance to escape. That's... nice.~
+@1270 = ~We are.. we are standing on top of... (gulp) By the gods, <CHARNAME>, are you alright?~
+@1271 = ~Did we have to kill them? I mean, yeah, we probably did.~
+@1272 = ~Oh dear... oh dear... If we do not close this portal somehow, we might as well kill ourselves right away. So, better we die trying... right? I'd never thought I might sound like a paladin one day... (moans)~
+@1273 = ~We... we are back. And the portal is closed... <CHARNAME>? <CHARNAME>?! You are not bleeding - are you?!~
+@1274 = ~I... I feel sick.~
+@1275 = ~Is this still real or did we land in a nightmare? Gods, I'll be so glad when this is over - one way or the other. Although I prefer the one way.~
+@1276 = ~This would be so much better without being afraid of heights...~
+@1277 = ~Oh dear... Here we go!~
+@1278 = ~Boy, I'm happy for Gavin that he's not here!~
+@1279 = ~Oh! <CHARNAME>, we are in a dead magic zone.~
+@1280 = ~That... that's a huge beetle. I'm glad there are no Rhinoceros Spiders!~
+@1281 = ~Uh-oh... that's exactly what I feared would happen. The battle started! Let's fight them!~
+@1282 = ~Another battle! We will prevail! I hope.~
+/* talking about the dragon (skeleton) at Dragonspear Castle */
+@1283 = ~It just *had* to die right on top of the castle, hadn't it?~
+@1284 = ~I never thought I'd say that, but those doors look *really* intimidating!~
+@1285 = ~For some opponents, getting to their spellbooks is utterly satisfying. Hephernaan is one of those.~
+/* @1286 + @1287 in c#brando_scrollscribing.baf */
+@1286 = ~I'm sorry - can't do this here!~
+@1287 = ~Here you are.~ [c#ablank]
+@1288 = ~[Brandock]This is a mighty robe, especially for a mage.~
+@1289 = ~A hidden library! This is getting better and better. Oh yes, these are very interesting, indeed.~
+@1290 = ~Ooh, a library! Don't mind me, I'll have a quick peek around.~
+@1291 = ~(Brandock takes a good look at the dropped spellbooks, seemingly interested in what he sees.)~
+@1292 = ~Oh yes. This spellbook is definitely interesting.~
+@1293 = ~Are you serious?! Get this thing off me, and quickly! I'm no use like this.~
+@1294 = ~Old Torn Out Book Page~
+@1295 = ~This seems to be the missing page from Eldom's magic book he asked you to find. They give instructions how to enchant +3 munition by using up lower enchanted charges. 
+You see hand written notes along the page, the most obvious one being "This is of *no* use without the book it's from!!!" scribbled in big letters on the top.~
+@1296 = ~Mander~
+@1297 = ~Eldom~
+@1298 = ~So many people! So, so many people.~
+@1299 = ~I won't panic. I am all calm. Aaaaaall calm.~
+@1300 = ~I now I'll regret this, but I say it anyway. I'll be glad to get out of here.~
+
+/* BGII */
+@3500 = ~House of Brandock's Cousin~
+@3501 = ~"Invisibility". Marked. You can turn to another page of the Book of Infinite Spells.~
+@3502 = ~"Protection From Evil". Marked. You can turn to another page of the Book of Infinite Spells.~
+@3503 = ~"True Seeing". Marked. You can turn to another page.~
+@3504 = ~"Farsight". Marked. You can turn to another page of the Book of Infinite Spells.~
+@3505 = ~"Spell Turning". Marked.~
+@3506 = ~"Wyvern Call". You can turn to another page of the Book of Infinite Spells.~
+@3507 = ~"Stinking Cloud". You can turn to another page.~
+@3508 = ~"Lightning Bolt". Marked. You can turn to another page of the Book of Infinite Spells.~
+@3509 = ~Ooh, some of the book shelves got blood stains. That's a shame... There are some quite interesting books here. I'd like to return here when the keep is cleared.~
+@3510 = ~Hmm. This mage had some intresting spells in his spellbook.~
+@3511 = ~This mage was not bad. Her spellbook surely is interesting.~
+@3512 = ~This mage was not bad at all! I'll have a quick glance at his spellbook.~
+@3513 = ~I'll have a look at this mage's spellbook.~
+@3514 = ~Oh dear. I'll have a look at his spellbook - now that he doesn't need it any more.~
+@3515 = ~Nothing to learn from these spellbooks... at least for me. That's disappointing.~
+@3516 = ~I learn nothing from this spellbook. (sigh)~
+@3517 = ~At least her spellbook is useful.~
+@3518 = ~Finally a mage whos spellbook is a joy to read - and I feel like trespassing while doing it. I feel bad for the man and what happened to him - regardless of all the evil it caused.~
+@3519 = ~Nothing to learn from this spellbook. Why do you even attack if you are such a low level!~
+@3520 = ~No - nothing to learn from this spellbook. (sigh)~
+
+/* Lines that are used at several places, also in d-files */
+
+@100285 = ~Hey, Brandock. What'cha think? I found a teacher for my magic skills in Duke Jannath. Jeeeeealous?~
+@100286 = ~Jealous? Me? Because you found an influencial, well-known, acknowledged teacher for learning and improving your magical skills?~
+@100287 = ~(nods teasingly) U-hu!~
+@100288 = ~Huh?~
+@100289 = ~Not any more, Imoen... I am so much farther than back then when I was pondering which mage could be my teacher. So much farther. Back *then*, though - back *then* I would have been jealous as *hell*.~
+@100290 = ~Ha!~
+
+/* c#7thpmm_thingies.tpa */
+@200000 = ~(yawn)~
+@200001 = ~I want you to stay in sight.~
+@200002 = ~Stop staying in sight.~
+@200003 = ~I want you to look out for traps.~ 
+@200004 = ~Stop looking for traps.~
+@200005 = ~If we encounter enemies...~
+@200006 = ~Leave everything as it is.~
+@200007 = ~I want you to fight enemies you see with magic.~
+@200008 = ~I want you to first prepare yourself and fight enemies with magic if you see them.~
+@200009 = ~I want you to run away from enemies so you don't have to fight.~
+@200010 = ~I want you to fight with melee weapons if you see enemies.~
+@200011 = ~I want you to fight with ranged weapons if you see enemies.~
+@200012 = ~I want you to only defend yourself if attacked.~
+@200013 = ~Do not fight at all, no matter what.~
+@200014 = ~I have no new instructions for fights.~
+@200015 = ~What do you want me to do?~
+@200016 = ~Yes?~
+@200017   = ~Brandock, please warn me if your health gets too low in the next fight.~
+@200018   = ~Brandock, I want you to stop warning me about your health conditions in our fights.~
+@200019   = ~I will!~
+@200020   = ~I want to give you instructions how to follow me.~
