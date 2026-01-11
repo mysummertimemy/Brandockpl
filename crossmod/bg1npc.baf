@@ -1,0 +1,118 @@
+
+/* Brandock-Imoen: extra banter for BG1NPC and Imoen's interest in magic */
+
+/* Imoen looks into Tarnesh's spellbook */
+/* activation */
+IF
+%BG1_BEFORE_TRANSITION%
+  OR(2) InParty(Myself) Global("C#BrandockJoined","GLOBAL",2)
+//  RealGlobalTimerExpired("C#BrandockNPCBanterTimer","GLOBAL")
+    See(Player1)
+    !Detect([ENEMY])
+  See("%IMOEN_DV%") 
+  !StateCheck("%IMOEN_DV%",CD_STATE_NOTVALID)
+  InParty("%IMOEN_DV%")
+  CombatCounter(0)
+  Global("C#Brandock_ImoenBG1NPC","GLOBAL",0)
+  Global("X#IMPC8","GLOBAL",2) //Imoen looked into Tarnesh's spell book
+THEN
+  RESPONSE #100
+    SetGlobal("C#Brandock_ImoenBG1NPC","GLOBAL",1)
+END
+
+/* triggering */
+IF 
+%BG1_BEFORE_TRANSITION%
+  OR(2) InParty(Myself) Global("C#BrandockJoined","GLOBAL",2)
+  !StateCheck(Player1,CD_STATE_NOTVALID)
+  !StateCheck(Myself,CD_STATE_NOTVALID)
+    See(Player1)
+    !Detect([ENEMY])
+  See("%IMOEN_DV%") 
+  !StateCheck("%IMOEN_DV%",CD_STATE_NOTVALID)
+  InParty("%IMOEN_DV%")
+  CombatCounter(0)
+  Global("C#Brandock_ImoenBG1NPC","GLOBAL",1)
+THEN
+	RESPONSE #100
+		RealSetGlobalTimer("C#BrandockNPCBanterTimer","GLOBAL",3600)
+		StartDialogueNoSet("%IMOEN_DV%")
+END
+
+/* Imoen created her tome */
+/* activation */
+IF
+%BG1_BEFORE_TRANSITION%
+  OR(2) InParty(Myself) Global("C#BrandockJoined","GLOBAL",2)
+    See(Player1)
+    !Detect([ENEMY])
+  See("%IMOEN_DV%") 
+  !StateCheck("%IMOEN_DV%",CD_STATE_NOTVALID)
+  !StateCheck(Myself,CD_STATE_NOTVALID)
+  InParty("%IMOEN_DV%")
+  CombatCounter(0)
+  Global("C#Brandock_ImoenBG1NPCTome","GLOBAL",0)
+  PartyHasItem("X#TOME") //Imoen created her artifact
+THEN
+  RESPONSE #100
+    SetGlobal("C#Brandock_ImoenBG1NPCTome","GLOBAL",1)  
+END
+
+/* triggering */
+IF 
+%BG1_BEFORE_TRANSITION%
+  OR(2) InParty(Myself) Global("C#BrandockJoined","GLOBAL",2)
+  !StateCheck(Player1,CD_STATE_NOTVALID)
+  !StateCheck(Myself,CD_STATE_NOTVALID)
+    See(Player1)
+    !Detect([ENEMY])
+  See("%IMOEN_DV%") 
+  !StateCheck("%IMOEN_DV%",CD_STATE_NOTVALID)
+  InParty("%IMOEN_DV%")
+  CombatCounter(0)
+  Global("C#Brandock_ImoenBG1NPCTome","GLOBAL",1)
+THEN
+	RESPONSE #100
+		RealSetGlobalTimer("C#BrandockNPCBanterTimer","GLOBAL",3600)
+		StartDialogueNoSet("%IMOEN_DV%")
+END
+
+/* follow up after Imoen created her tome */
+/* only if Imoen isn't a mage yet */
+/* activation */
+IF
+%BG1_BEFORE_TRANSITION%
+  OR(2) InParty(Myself) Global("C#BrandockJoined","GLOBAL",2)
+    See(Player1)
+    !Detect([ENEMY])
+  See("%IMOEN_DV%") 
+  !StateCheck("%IMOEN_DV%",CD_STATE_NOTVALID)
+  InParty("%IMOEN_DV%")
+  CombatCounter(0)
+  RealGlobalTimerExpired("C#BrandockNPCBanterTimer","GLOBAL")
+  Global("C#Brandock_ImoenBG1NPC","GLOBAL",3)
+  Global("C#Brandock_ImoenBG1NPCTome","GLOBAL",2)
+  !Class("%IMOEN_DV%",MAGE_ALL)
+THEN
+  RESPONSE #100
+    SetGlobal("C#Brandock_ImoenBG1NPC","GLOBAL",4)  
+END
+
+/* triggering */
+IF 
+%BG1_BEFORE_TRANSITION%
+  OR(2) InParty(Myself) Global("C#BrandockJoined","GLOBAL",2)
+  !StateCheck(Player1,CD_STATE_NOTVALID)
+  !StateCheck(Myself,CD_STATE_NOTVALID)
+    See(Player1)
+    !Detect([ENEMY])
+  See("%IMOEN_DV%") 
+  !StateCheck("%IMOEN_DV%",CD_STATE_NOTVALID)
+  InParty("%IMOEN_DV%")
+  CombatCounter(0)
+  Global("C#Brandock_ImoenBG1NPC","GLOBAL",4)
+THEN
+	RESPONSE #100
+		RealSetGlobalTimer("C#BrandockNPCBanterTimer","GLOBAL",3600)
+		StartDialogueNoSet("%IMOEN_DV%")
+END

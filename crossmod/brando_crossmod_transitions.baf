@@ -1,0 +1,56 @@
+/* set variables for detection of mod-added content */
+IF	%BGT_VAR%
+	OR(2) InParty("C#Brandock") Global("C#BrandockJoined","GLOBAL",2)
+	!See([ENEMY])
+	CombatCounter(0)
+	Global("#L_SoDExitModded","LOCALS",0)
+THEN
+	RESPONSE #100
+		SetGlobal("#L_BG2ExitModded","LOCALS",1)
+		SetGlobal("#L_SoDExitModded","LOCALS",1)
+END
+
+/* Transitions. SoD transition. Brandock will say something. */
+
+IF	%BGT_VAR%
+	OR(2) InParty("C#Brandock") Global("C#BrandockJoined","GLOBAL",2)
+	InMyArea("C#Brandock") !StateCheck("C#Brandock",CD_STATE_NOTVALID)
+	OR(3)
+		Global("#L_StartCaelarAttack","GLOBAL",1) 
+		Global("#L_StartCaelarAttack","GLOBAL",2) 
+		Global("#L_StartCaelarAttack","GLOBAL",3)
+	Global("C#Brando_TransitionsLeave","GLOBAL",0)
+THEN
+	RESPONSE #100
+		SetGlobal("C#Brando_TransitionsLeave","GLOBAL",1)
+END
+
+IF
+	OR(2) InParty("C#Brandock") Global("C#BrandockJoined","GLOBAL",2)
+	InMyArea("C#Brandock") !StateCheck("C#Brandock",CD_STATE_NOTVALID)
+	Global("C#Brando_TransitionsLeave","GLOBAL",1)
+THEN
+	RESPONSE #100
+		StartDialogueNoSet(Player1)
+END
+
+/* Transitions. BGII transition. Brandock will leave. */
+
+IF	%BGT_VAR%
+	OR(2) InParty("C#Brandock") Global("C#BrandockJoined","GLOBAL",2)
+	InMyArea("C#Brandock") !StateCheck("C#Brandock",CD_STATE_NOTVALID)
+	Global("#L_StartBG2","GLOBAL",1) 
+	GlobalLT("C#Brando_TransitionsLeave","GLOBAL",4)
+THEN
+	RESPONSE #100
+		SetGlobal("C#Brando_TransitionsLeave","GLOBAL",4)
+END
+
+IF
+	OR(2) InParty("C#Brandock") Global("C#BrandockJoined","GLOBAL",2)
+	InMyArea("C#Brandock") !StateCheck("C#Brandock",CD_STATE_NOTVALID)
+	Global("C#Brando_TransitionsLeave","GLOBAL",4)
+THEN
+	RESPONSE #100
+		StartDialogueNoSet(Player1)
+END
